@@ -6,7 +6,7 @@ namespace SSPTraining.Business.Businesses;
 
 public class PersonBusiness : BaseBusiness<Person>
 {
-	public PersonBusiness(IUnitOfWork unitOfWork) : base(unitOfWork, unitOfWork.PersonRepository)
+	public PersonBusiness(IUnitOfWork unitOfWork) : base(unitOfWork, unitOfWork.PersonRepository!)
 	{
 	}
 }

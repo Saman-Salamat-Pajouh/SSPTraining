@@ -13,11 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSPTraining.Model", "SSPTra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSPTraining.DataAccess", "SSPTraining.DataAccess\SSPTraining.DataAccess.csproj", "{3459977C-040C-4A35-80B2-B4C41E6C7D3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSPTraining.Common", "SSPTraining.Common\SSPTraining.Common.csproj", "{950ED42E-5EE5-4180-AE76-C43A3FBECC5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSPTraining.Common", "SSPTraining.Common\SSPTraining.Common.csproj", "{950ED42E-5EE5-4180-AE76-C43A3FBECC5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSPTraining.Business", "SSPTraining.Business\SSPTraining.Business.csproj", "{D821287A-A514-42E4-A02F-C19C370AA4A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSPTraining.Business", "SSPTraining.Business\SSPTraining.Business.csproj", "{D821287A-A514-42E4-A02F-C19C370AA4A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSPTraining.Api", "SSPTraining.Api\SSPTraining.Api.csproj", "{E88228CF-E634-4523-940E-286706393A82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSPTraining.Api", "SSPTraining.Api\SSPTraining.Api.csproj", "{E88228CF-E634-4523-940E-286706393A82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
