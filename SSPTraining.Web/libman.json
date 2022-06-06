@@ -1,0 +1,127 @@
+{
+	"version": "1.0",
+	"defaultProvider": "cdnjs",
+	"libraries": [
+		{
+			"library": "twitter-bootstrap@4.5.0",
+			"destination": "wwwroot/lib/bootstrap/"
+		},
+		{
+			"library": "datatables.net@1.10.16",
+			"destination": "wwwroot/lib/datatables.net/"
+		},
+		{
+			"library": "datatables.net-bs4@1.10.24",
+			"destination": "wwwroot/lib/datatables.net-bs4/"
+		},
+		{
+			"library": "datatables.net-responsive-bs@2.2.7",
+			"destination": "wwwroot/lib/datatables.net-responsive-bs/",
+			"files": [
+				"responsive.bootstrap.min.css",
+				"responsive.bootstrap.css"
+			]
+		},
+		{
+			"library": "jquery-validation-unobtrusive@3.2.11",
+			"destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+		},
+		{
+			"library": "iCheck@1.0.2",
+			"destination": "wwwroot/lib/iCheck/"
+		},
+		{
+			"provider": "jsdelivr",
+			"library": "md.bootstrappersiandatetimepicker@3.10.1",
+			"destination": "wwwroot/lib/md.bootstrappersiandatetimepicker/",
+			"files": [
+				"dist/jquery.md.bootstrap.datetimepicker.js",
+				"dist/jquery.md.bootstrap.datetimepicker.js.map",
+				"dist/jquery.md.bootstrap.datetimepicker.min.js",
+				"dist/jquery.md.bootstrap.datetimepicker.style.css",
+				"dist/jquery.md.bootstrap.datetimepicker.style.css.map",
+				"dist/jquery.md.bootstrap.datetimepicker.style.min.css"
+			]
+		},
+		{
+			"library": "limonte-sweetalert2@10.15.7",
+			"destination": "wwwroot/lib/limonte-sweetalert2/",
+			"files": [
+				"sweetalert2.min.js",
+				"sweetalert2.min.css"
+			]
+		},
+		{
+			"library": "moment.js@2.8.2",
+			"destination": "wwwroot/lib/moment.js/",
+			"files": [
+				"moment.min.js",
+				"locales.min.js",
+				"locales.js",
+				"moment.js"
+			]
+		},
+		{
+			"library": "jquery@3.2.0",
+			"destination": "wwwroot/lib/jquery/",
+			"files": [
+				"jquery.min.js",
+				"jquery.js"
+			]
+		},
+		{
+			"library": "jQuery-slimScroll@1.3.8",
+			"destination": "wwwroot/lib/jQuery-slimScroll/"
+		},
+		{
+			"library": "popper.js@1.16.0",
+			"destination": "wwwroot/lib/popper.js/"
+		},
+		{
+			"library": "sticky-kit@1.1.3",
+			"destination": "wwwroot/lib/sticky-kit/"
+		},
+		{
+			"library": "font-awesome@5.15.3",
+			"destination": "wwwroot/lib/font-awesome/",
+			"files": [
+				"css/all.min.css",
+				"css/fontawesome.min.css",
+				"css/fontawesome.css",
+				"webfonts/fa-brands-400.eot",
+				"webfonts/fa-brands-400.svg",
+				"webfonts/fa-brands-400.ttf",
+				"webfonts/fa-brands-400.woff",
+				"webfonts/fa-brands-400.woff2",
+				"webfonts/fa-regular-400.eot",
+				"webfonts/fa-regular-400.svg",
+				"webfonts/fa-regular-400.ttf",
+				"webfonts/fa-regular-400.woff",
+				"webfonts/fa-regular-400.woff2",
+				"webfonts/fa-solid-900.eot",
+				"webfonts/fa-solid-900.svg",
+				"webfonts/fa-solid-900.ttf",
+				"webfonts/fa-solid-900.woff",
+				"webfonts/fa-solid-900.woff2"
+			]
+		},
+		{
+			"provider": "jsdelivr",
+			"library": "jalali-moment@3.3.10",
+			"destination": "wwwroot/lib/jalali-moment/",
+			"files": [
+				"dist/jalali-moment.browser.js",
+				"dist/jalali-moment.browser.js.map",
+				"dist/jalali-moment.browser.min.js"
+			]
+		},
+		{
+			"library": "jqueryui@1.12.1",
+			"destination": "wwwroot/lib/jqueryui/",
+			"files": [
+				"jquery-ui.min.js",
+				"jquery-ui.min.css"
+			]
+		}
+	]
+}
