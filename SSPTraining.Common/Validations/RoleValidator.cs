@@ -1,11 +1,10 @@
 ﻿using FluentValidation;
 using SSPTraining.Model;
 
-namespace SSPTraining.Common.Validations
+namespace SSPTraining.Common.Validations;
+
+public class RoleValidator : AbstractValidator<Role>
 {
-	public class RoleValidator : AbstractValidator<Role>
-	{
-		public RoleValidator() => 
-			RuleFor(x => x.Title).NotEmpty();
-	}
+	public RoleValidator() =>
+		RuleFor(x => x.Title).NotEmpty();
 }

@@ -30,6 +30,7 @@ try
 		.InjectNLog(builder.Environment)
 		.InjectContext()
 		.InjectBusinesses()
+		.InjectFluentValidation()
 		.InjectContentCompression();
 
 	var app = builder.Build();

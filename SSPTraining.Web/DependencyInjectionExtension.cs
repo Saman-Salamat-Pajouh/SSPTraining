@@ -93,5 +93,5 @@ internal static class DependencyInjectionExtension
 
 	internal static IServiceCollection InjectFluentValidation(this IServiceCollection services) =>
 		services.AddFluentValidation(fv =>
-		fv.RegisterValidatorsFromAssemblyContaining<RoleValidator>());
+			fv.RegisterValidatorsFromAssemblyContaining<RoleValidator>());
 }

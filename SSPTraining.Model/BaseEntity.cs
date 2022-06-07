@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Sieve.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SSPTraining.Model;
@@ -10,6 +11,7 @@ public class BaseEntity
 
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+	[Sieve(CanFilter = true, CanSort = true)]
 	public int Id { get; set; }
 
 	public DateTime CreationDate { get; set; }
