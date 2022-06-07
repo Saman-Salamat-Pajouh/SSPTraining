@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -9,6 +10,7 @@ using SSPTraining.Api.Filters;
 using SSPTraining.Business.Businesses;
 using SSPTraining.Business.Contract;
 using SSPTraining.Common;
+using SSPTraining.Common.Validations;
 using SSPTraining.DataAccess;
 using SSPTraining.DataAccess.Context;
 using SSPTraining.DataAccess.Contracts;
@@ -88,4 +90,8 @@ internal static class DependencyInjectionExtension
 		services.Configure<GzipCompressionProviderOptions>
 				(options => options.Level = CompressionLevel.Fastest)
 			.AddResponseCompression(options => options.Providers.Add<GzipCompressionProvider>());
+
+	internal static IServiceCollection InjectFluentValidation(this IServiceCollection services) =>
+		services.AddFluentValidation(fv =>
+		fv.RegisterValidatorsFromAssemblyContaining<RoleValidator>());
 }
