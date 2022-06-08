@@ -1,7 +1,7 @@
 ﻿using Sieve.Services;
 using SSPTraining.DataAccess.Base;
 using SSPTraining.DataAccess.Context;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 
 namespace SSPTraining.DataAccess.Repositories;
 

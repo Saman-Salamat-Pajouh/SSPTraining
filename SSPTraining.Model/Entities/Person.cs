@@ -1,6 +1,6 @@
 ﻿using Sieve.Attributes;
 
-namespace SSPTraining.Model;
+namespace SSPTraining.Model.Entities;
 
 public class Person : BaseEntity
 {

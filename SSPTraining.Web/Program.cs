@@ -28,7 +28,7 @@ try
 		.InjectAuthentication()
 		.AddEndpointsApiExplorer()
 		.InjectNLog(builder.Environment)
-		.InjectContext()
+		.InjectContext(builder.Configuration, builder.Environment)
 		.InjectBusinesses()
 		.InjectFluentValidation()
 		.InjectContentCompression();

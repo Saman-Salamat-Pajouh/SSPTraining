@@ -14,7 +14,7 @@ using SSPTraining.Common.Validations;
 using SSPTraining.DataAccess;
 using SSPTraining.DataAccess.Context;
 using SSPTraining.DataAccess.Contracts;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 using System.IO.Compression;
 using System.Resources;
 using System.Text.Json.Serialization;
@@ -45,9 +45,13 @@ internal static class DependencyInjectionExtension
 	internal static IServiceCollection InjectUnitOfWork(this IServiceCollection services) =>
 		services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-	internal static IServiceCollection InjectContext(this IServiceCollection services) =>
-		services.AddDbContextPool<SspTrainingContext>(options =>
-				options.UseInMemoryDatabase("SSP"));
+	internal static IServiceCollection InjectContext(this IServiceCollection services,
+		IConfiguration configuration, IWebHostEnvironment environment) =>
+		environment.IsDevelopment() || environment.IsEnvironment("Testing")
+			? services.AddDbContextPool<SspTrainingContext>(options =>
+				options.UseInMemoryDatabase("SSP"))
+			: services.AddDbContextPool<SspTrainingContext>(options =>
+				options.UseSqlServer(configuration.GetConnectionString("SSPTrainingContext")));
 
 	internal static IServiceCollection InjectNLog(this IServiceCollection services,
 		IWebHostEnvironment environment)

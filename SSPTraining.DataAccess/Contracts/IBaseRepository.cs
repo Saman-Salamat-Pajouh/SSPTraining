@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Query;
 using Sieve.Models;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 
 namespace SSPTraining.DataAccess.Contracts;
 

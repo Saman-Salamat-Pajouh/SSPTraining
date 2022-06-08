@@ -5,7 +5,7 @@ using SSPTraining.Business.Base;
 using SSPTraining.Common.Helpers;
 using SSPTraining.Common.ViewModels;
 using SSPTraining.DataAccess.Contracts;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 using System.Security.Claims;
 namespace SSPTraining.Business.Businesses;
 

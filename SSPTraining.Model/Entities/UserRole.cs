@@ -1,7 +1,7 @@
 ﻿using Sieve.Attributes;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SSPTraining.Model;
+namespace SSPTraining.Model.Entities;
 
 public class UserRole : BaseEntity
 {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SSPTraining.Common.Helpers;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
+using SSPTraining.Model.Views;
 
 namespace SSPTraining.DataAccess.Context;
 
@@ -16,9 +17,13 @@ public class SspTrainingContext : DbContext
 
 	public DbSet<UserRole>? UserRoles { get; set; }
 
+	public DbSet<UserRolesView>? UserRolesViews { get; set; }
+
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		base.OnModelCreating(modelBuilder);
+
+		modelBuilder.Entity<UserRolesView>().ToView(nameof(UserRolesView)).HasNoKey();
 
 		modelBuilder.Entity<Role>().HasData(new List<Role>
 		{

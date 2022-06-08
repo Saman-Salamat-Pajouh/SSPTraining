@@ -1,6 +1,6 @@
 ﻿using Sieve.Models;
 using SSPTraining.Common.ViewModels;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 
 namespace SSPTraining.Business.Contract;
 

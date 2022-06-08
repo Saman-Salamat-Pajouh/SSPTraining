@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 
 namespace SSPTraining.Common.Validations;
 

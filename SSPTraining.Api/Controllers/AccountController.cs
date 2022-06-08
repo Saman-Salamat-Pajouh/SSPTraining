@@ -7,7 +7,7 @@ using SSPTraining.Business.Businesses;
 using SSPTraining.Business.Contract;
 using SSPTraining.Common.Helpers;
 using SSPTraining.Common.ViewModels;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 
 namespace SSPTraining.Api.Controllers;
 

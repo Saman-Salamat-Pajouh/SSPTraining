@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SSPTraining.Model;
+namespace SSPTraining.Model.Entities;
 
 public class BaseEntity
 {

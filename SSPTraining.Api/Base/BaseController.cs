@@ -4,7 +4,7 @@ using SSPTraining.Api.Contracts;
 using SSPTraining.Api.Filters;
 using SSPTraining.Business.Contract;
 using SSPTraining.Common.ViewModels;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 
 namespace SSPTraining.Api.Base;
 

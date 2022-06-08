@@ -4,7 +4,7 @@ using Sieve.Models;
 using Sieve.Services;
 using SSPTraining.DataAccess.Context;
 using SSPTraining.DataAccess.Contracts;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 
 namespace SSPTraining.DataAccess.Base;
 

@@ -2,7 +2,7 @@
 using SSPTraining.Business.Contract;
 using SSPTraining.Common.ViewModels;
 using SSPTraining.DataAccess.Contracts;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 
 namespace SSPTraining.Business.Base;
 

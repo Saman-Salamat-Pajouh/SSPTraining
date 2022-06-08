@@ -1,6 +1,6 @@
 ﻿using SSPTraining.Api.Base;
 using SSPTraining.Business.Contract;
-using SSPTraining.Model;
+using SSPTraining.Model.Entities;
 
 namespace SSPTraining.Api.Controllers;
 
