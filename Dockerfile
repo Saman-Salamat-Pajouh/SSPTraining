@@ -14,7 +14,14 @@ COPY ["SSPTraining.Common/", "SSPTraining.Common/"]
 COPY ["SSPTraining.Business/", "SSPTraining.Business/"]
 COPY ["SSPTraining.DataAccess/", "SSPTraining.DataAccess/"]
 
-RUN dotnet restore "SSPTraining.sln" 
+# Test Projects
+COPY ["SSPTraining.Test.Unit/", "SSPTraining.Test.Unit/"]
+COPY ["SSPTraining.Test.Integration/", "SSPTraining.Test.Integration/"]
+
+RUN dotnet restore --disable-parallel --packages packages --ignore-failed-sources "SSPTraining.sln"
+
+RUN dotnet test "SSPTraining.Test.Unit" -c Release --no-restore
+RUN dotnet test "SSPTraining.Test.Integration" -c Release --no-restore
 
 COPY . .
 
