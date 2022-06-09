@@ -1,4 +1,6 @@
 ﻿using FluentValidation.AspNetCore;
+using Hoorbakht.RedisService;
+using Hoorbakht.RedisService.Contracts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
@@ -98,4 +100,16 @@ internal static class DependencyInjectionExtension
 	internal static IServiceCollection InjectFluentValidation(this IServiceCollection services) =>
 		services.AddFluentValidation(fv =>
 			fv.RegisterValidatorsFromAssemblyContaining<RoleValidator>());
+
+	internal static IServiceCollection InjectRedisServices(this IServiceCollection services, IConfiguration configuration)
+	{
+		var connection = new RedisConfiguration(-1,
+			"SSPTraining",
+			configuration.GetConnectionString("RedisConnectionString"),
+			1);
+
+		return services.AddSingleton<IRedisService<List<Person>>>(_ => new RedisService<List<Person>>(connection, "Person"))
+			.AddSingleton<IRedisService<List<User>>>(_ => new RedisService<List<User>>(connection, "User"))
+			.AddSingleton<IRedisService<List<Role>>>(_ => new RedisService<List<Role>>(connection, "Role"));
+	}
 }

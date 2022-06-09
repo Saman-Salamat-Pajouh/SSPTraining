@@ -1,4 +1,5 @@
-﻿using Sieve.Attributes;
+﻿using Hoorbakht.RedisService.Contracts;
+using Sieve.Attributes;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SSPTraining.Model.Entities;
@@ -16,5 +17,6 @@ public class User : BaseEntity
 	[ForeignKey("Person")]
 	public int PersonId { get; set; }
 
+	[CacheableContract]
 	public virtual ICollection<UserRole>? UserRoles { get; set; }
 }

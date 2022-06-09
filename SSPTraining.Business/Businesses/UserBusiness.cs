@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Hoorbakht.RedisService;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using SSPTraining.Business.Base;
@@ -7,13 +8,14 @@ using SSPTraining.Common.ViewModels;
 using SSPTraining.DataAccess.Contracts;
 using SSPTraining.Model.Entities;
 using System.Security.Claims;
+
 namespace SSPTraining.Business.Businesses;
 
 public class UserBusiness : BaseBusiness<User>
 {
 	private readonly IUnitOfWork _unitOfWork;
 
-	public UserBusiness(IUnitOfWork unitOfWork) : base(unitOfWork, unitOfWork.UserRepository!)
+	public UserBusiness(IUnitOfWork unitOfWork, IRedisService<List<User>> redisService) : base(unitOfWork, unitOfWork.UserRepository!, redisService)
 	{
 		_unitOfWork = unitOfWork;
 	}

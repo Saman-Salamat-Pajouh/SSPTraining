@@ -14,7 +14,9 @@ public class BaseEntity
 	[Sieve(CanFilter = true, CanSort = true)]
 	public int Id { get; set; }
 
+	[Sieve(CanSort = true)]
 	public DateTime CreationDate { get; set; }
 
+	[Sieve(CanSort = true)]
 	public DateTime LastUpdated { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using Sieve.Models;
+﻿using Hoorbakht.RedisService;
+using Sieve.Models;
 using SSPTraining.Business.Contract;
 using SSPTraining.Common.ViewModels;
 using SSPTraining.DataAccess.Contracts;
@@ -12,10 +13,13 @@ public class BaseBusiness<T> : IBaseBusiness<T> where T : BaseEntity
 
 	private readonly IBaseRepository<T> _repository;
 
-	public BaseBusiness(IUnitOfWork unitOfWork, IBaseRepository<T> repository)
+	private readonly IRedisService<List<T>> _redisService;
+
+	public BaseBusiness(IUnitOfWork unitOfWork, IBaseRepository<T> repository, IRedisService<List<T>> redisService)
 	{
 		_unitOfWork = unitOfWork;
 		_repository = repository;
+		_redisService = redisService;
 	}
 
 	public async Task<SamanSalamatResponse?> CreateAsync(T t, CancellationToken cancellationToken)
@@ -32,7 +36,18 @@ public class BaseBusiness<T> : IBaseBusiness<T> where T : BaseEntity
 
 	public async Task<SamanSalamatResponse<List<T>>?> LoadAllAsync(SieveModel model, CancellationToken cancellationToken)
 	{
+		var cacheData = await _redisService.GetHashAsync("All");
+		if (cacheData != null)
+			return new SamanSalamatResponse<List<T>>
+			{
+				Data = cacheData,
+				RecordsTotal = cacheData.Count,
+				RecordsFiltered = cacheData.Count,
+				Message = "Data Loaded from Cache",
+				IsSuccess = true
+			};
 		var data = await _repository.LoadAllAsync(model, null, cancellationToken);
+		await _redisService.SetHashAsync("All", data);
 		return new SamanSalamatResponse<List<T>>
 		{
 			Data = data,

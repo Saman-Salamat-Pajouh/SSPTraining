@@ -1,4 +1,5 @@
-﻿using Sieve.Attributes;
+﻿using Hoorbakht.RedisService.Contracts;
+using Sieve.Attributes;
 
 namespace SSPTraining.Model.Entities;
 
@@ -12,5 +13,6 @@ public class Person : BaseEntity
 
 	public string FullName => Name + " " + Family;
 
+	[CacheableContract]
 	public virtual User? User { get; set; }
 }

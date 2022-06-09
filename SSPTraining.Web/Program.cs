@@ -31,6 +31,7 @@ try
 		.InjectContext(builder.Configuration, builder.Environment)
 		.InjectBusinesses()
 		.InjectFluentValidation()
+		.InjectRedisServices(builder.Configuration)
 		.InjectContentCompression();
 
 	var app = builder.Build();
