@@ -4,10 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using NLog;
 using SSPTraining.Api.Filters;
 using SSPTraining.Business.Businesses;
-using SSPTraining.Business.Contract;
 using SSPTraining.Common.Helpers;
 using SSPTraining.Common.ViewModels;
-using SSPTraining.Model.Entities;
 
 namespace SSPTraining.Api.Controllers;
 
@@ -17,12 +15,12 @@ public class AccountController : ControllerBase
 {
 	private readonly Logger _logger;
 
-	private readonly UserBusiness? _userBusiness;
+	private readonly AccountBusiness? _accountBusiness;
 
-	public AccountController(Logger logger, IBaseBusiness<User> userBusiness)
+	public AccountController(Logger logger, AccountBusiness accountBusiness)
 	{
 		_logger = logger;
-		_userBusiness = userBusiness as UserBusiness;
+		_accountBusiness = accountBusiness;
 	}
 
 	[HttpPost]
@@ -32,7 +30,7 @@ public class AccountController : ControllerBase
 	{
 		try
 		{
-			return await _userBusiness!.LoginAsync(login, HttpContext, cancellationToken);
+			return await _accountBusiness!.LoginAsync(login, HttpContext, cancellationToken);
 		}
 		catch (Exception ex)
 		{

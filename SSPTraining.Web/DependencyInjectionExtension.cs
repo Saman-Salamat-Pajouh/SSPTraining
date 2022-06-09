@@ -11,6 +11,7 @@ using SSPTraining.Api.Contracts;
 using SSPTraining.Api.Filters;
 using SSPTraining.Business.Businesses;
 using SSPTraining.Business.Contract;
+using SSPTraining.Business.Decorators;
 using SSPTraining.Common;
 using SSPTraining.Common.Validations;
 using SSPTraining.DataAccess;
@@ -90,7 +91,11 @@ internal static class DependencyInjectionExtension
 	internal static IServiceCollection InjectBusinesses(this IServiceCollection services) =>
 		services.AddScoped<IBaseBusiness<User>, UserBusiness>()
 			.AddScoped<IBaseBusiness<Role>, RoleBusiness>()
-			.AddScoped<IBaseBusiness<Person>, PersonBusiness>();
+			.AddScoped<IBaseBusiness<Person>, PersonBusiness>()
+			.AddScoped<AccountBusiness>()
+			.Decorate<IBaseBusiness<User>, CacheDecorator<User>>()
+			.Decorate<IBaseBusiness<Role>, CacheDecorator<Role>>()
+			.Decorate<IBaseBusiness<Person>, CacheDecorator<Person>>();
 
 	internal static IServiceCollection InjectContentCompression(this IServiceCollection services) =>
 		services.Configure<GzipCompressionProviderOptions>
@@ -108,8 +113,8 @@ internal static class DependencyInjectionExtension
 			configuration.GetConnectionString("RedisConnectionString"),
 			1);
 
-		return services.AddSingleton<IRedisService<List<Person>>>(_ => new RedisService<List<Person>>(connection, "Person"))
-			.AddSingleton<IRedisService<List<User>>>(_ => new RedisService<List<User>>(connection, "User"))
-			.AddSingleton<IRedisService<List<Role>>>(_ => new RedisService<List<Role>>(connection, "Role"));
+		return services.AddSingleton<IRedisService<Person>>(_ => new RedisService<Person>(connection, "Person"))
+			.AddSingleton<IRedisService<User>>(_ => new RedisService<User>(connection, "User"))
+			.AddSingleton<IRedisService<Role>>(_ => new RedisService<Role>(connection, "Role"));
 	}
 }

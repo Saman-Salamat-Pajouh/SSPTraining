@@ -20,6 +20,7 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
 		<PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.161" />
+		<PackageReference Include="Scrutor" Version="4.2.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.3.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.3.1" />
 		<PackageReference Include="NLog.Mongo" Version="4.6.0.191" />
