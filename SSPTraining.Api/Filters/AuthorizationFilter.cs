@@ -25,7 +25,7 @@ public class AuthorizationFilter : AuthorizeAttribute, IAuthorizationFilter
 		}
 		if (context.HttpContext.User.Claims.Any(x => x.Type == ClaimTypes.Role))
 			return;
-		if (context.ActionDescriptor.DisplayName.StartsWith('/'))
+		if (context.ActionDescriptor.DisplayName?.StartsWith('/') ?? false)
 			context.Result = new ForbidResult();
 		else
 		{

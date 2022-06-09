@@ -27,10 +27,10 @@ COPY . .
 
 WORKDIR "/src/SSPTraining.Web"
 
-RUN dotnet build "SSPTraining.Web.csproj" -c Release -o /app/build
+RUN dotnet build "SSPTraining.Web.csproj" -c Release --no-restore -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "SSPTraining.Web.csproj" -c Release -o /app/publish
+RUN dotnet publish "SSPTraining.Web.csproj" -c Release --no-restore -o /app/publish
 
 FROM base AS final
 WORKDIR /app
