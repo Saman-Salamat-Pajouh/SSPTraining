@@ -9,7 +9,6 @@ using NLog.Web;
 using Sieve.Services;
 using SSPTraining.Api.Contracts;
 using SSPTraining.Api.Filters;
-using SSPTraining.Business.Businesses;
 using SSPTraining.Business.Contract;
 using SSPTraining.Business.Decorators;
 using SSPTraining.Common;
@@ -89,13 +88,18 @@ internal static class DependencyInjectionExtension
 			.Services;
 
 	internal static IServiceCollection InjectBusinesses(this IServiceCollection services) =>
-		services.AddScoped<IBaseBusiness<User>, UserBusiness>()
-			.AddScoped<IBaseBusiness<Role>, RoleBusiness>()
-			.AddScoped<IBaseBusiness<Person>, PersonBusiness>()
-			.AddScoped<AccountBusiness>()
-			.Decorate<IBaseBusiness<User>, CacheDecorator<User>>()
-			.Decorate<IBaseBusiness<Role>, CacheDecorator<Role>>()
-			.Decorate<IBaseBusiness<Person>, CacheDecorator<Person>>();
+		services.Scan(scan =>
+				scan.FromAssembliesOf(typeof(IBaseBusiness<>))
+					.AddClasses(classes =>
+						classes.AssignableTo(typeof(IBaseBusiness<>)))
+					.AsImplementedInterfaces()
+					.WithScopedLifetime()
+					.AddClasses(classes =>
+						classes.Where(predicate =>
+							predicate.Name.EndsWith("Business") && !predicate.IsAssignableTo(typeof(IBaseBusiness<>))))
+					.AsSelf()
+					.WithScopedLifetime())
+			.Decorate(typeof(IBaseBusiness<>), typeof(CacheDecorator<>));
 
 	internal static IServiceCollection InjectContentCompression(this IServiceCollection services) =>
 		services.Configure<GzipCompressionProviderOptions>
