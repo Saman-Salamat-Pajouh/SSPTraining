@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Sieve.Models;
 using SSPTraining.Common.Helpers;
 using SSPTraining.Common.ViewModels;
 using SSPTraining.DataAccess.Contracts;
@@ -13,8 +16,21 @@ public class AccountBusiness
 {
 	private readonly IUnitOfWork _unitOfWork;
 
-	public AccountBusiness(IUnitOfWork unitOfWork) =>
+	private readonly IMapper _mapper;
+
+	public AccountBusiness(IUnitOfWork unitOfWork, IMapper mapper)
+	{
 		_unitOfWork = unitOfWork;
+		_mapper = mapper;
+	}
+
+	public async Task<List<UserViewModel>> LoadAllUsersViewModelAsync(SieveModel sieveModel, CancellationToken cancellationToken = new()) =>
+		_mapper.Map<List<UserViewModel>>(await _unitOfWork.UserRepository!.LoadAllAsync(sieveModel,
+			include => include
+				.Include(x => x.Person)
+				.Include(x => x.UserRoles)!
+				.ThenInclude(x => x.Role),
+			cancellationToken));
 
 	public async Task<bool> IsUsernameAndPasswordValidAsync(LoginViewModel loginViewModel, CancellationToken cancellationToken = new()) =>
 		await _unitOfWork.UserRepository!.IsUsernameAndPasswordValidAsync(loginViewModel.Username!,

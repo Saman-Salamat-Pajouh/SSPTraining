@@ -31,6 +31,7 @@ try
 		.InjectContext(builder.Configuration, builder.Environment)
 		.InjectBusinesses()
 		.InjectFluentValidation()
+		.InjectAutoMapper()
 		.InjectRedisServices(builder.Configuration)
 		.InjectContentCompression();
 

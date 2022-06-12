@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
+using Sieve.Models;
 using SSPTraining.Api.Filters;
 using SSPTraining.Business.Businesses;
 using SSPTraining.Common.Helpers;
@@ -46,6 +47,10 @@ public class AccountController : ControllerBase
 			return false;
 		}
 	}
+
+	[HttpGet]
+	public async Task<List<UserViewModel>> GetAllUsersAsync([FromQuery] SieveModel sieveModel, CancellationToken cancellationToken) =>
+		await _accountBusiness!.LoadAllUsersViewModelAsync(sieveModel, cancellationToken);
 
 	[Authorization]
 	[HttpGet]

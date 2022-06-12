@@ -12,6 +12,7 @@ using SSPTraining.Api.Filters;
 using SSPTraining.Business.Contract;
 using SSPTraining.Business.Decorators;
 using SSPTraining.Common;
+using SSPTraining.Common.Profiles;
 using SSPTraining.Common.Validations;
 using SSPTraining.DataAccess;
 using SSPTraining.DataAccess.Context;
@@ -121,4 +122,7 @@ internal static class DependencyInjectionExtension
 			.AddSingleton<IRedisService<User>>(_ => new RedisService<User>(connection, "User"))
 			.AddSingleton<IRedisService<Role>>(_ => new RedisService<Role>(connection, "Role"));
 	}
+
+	internal static IServiceCollection InjectAutoMapper(this IServiceCollection services) =>
+		services.AddAutoMapper(typeof(UserProfile).Assembly);
 }
